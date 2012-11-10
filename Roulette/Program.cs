@@ -15,6 +15,8 @@ namespace Roulette
             Console.Read();
         }
         
+
+        //todo: move the RunGame logic to the RouletteLogic assembly.
         private static IEnumerable<ResultDataItem> RunGame(int bankRoll, int minimumBet, int iterations, RouletteBettingStrategy strategy)
         {
             var results = new List<ResultDataItem>(); 
