@@ -38,10 +38,9 @@ namespace Roulette
             RouletteNumber numberRolled = RollTheBall();
 
             var result = new Result();
-
             result.IsWin = numberRolled.Color == colorBet;
-
             result.NetAmount = result.IsWin ? betAmount*2 : 0;
+            result.BetAmount = betAmount;
 
             return result;
         }

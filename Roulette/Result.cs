@@ -4,6 +4,7 @@
     {
         public int NetAmount { get; set; }
         public bool IsWin { get; set; }
+        public int BetAmount { get; set; }
 
         public override string ToString()
         {

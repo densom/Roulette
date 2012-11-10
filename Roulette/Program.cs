@@ -1,4 +1,5 @@
 ﻿using System;
+using Roulette.BettingStrategies;
 
 namespace Roulette
 {
@@ -6,36 +7,33 @@ namespace Roulette
     {
         private static void Main(string[] args)
         {
-            RunGame(500, 1);
+            RunGame(500, 1, 20, new MartingaleStrategy());
             Console.Read();
         }
 
-        private static void RunGame(int bankRoll, int minimumBet)
+        private static void RunGame(int bankRoll, int minimumBet, int iterations, RouletteBettingStrategy strategy)
         {
             var rouletteTable = new RouletteTable(200);
-
-            int betAmount = minimumBet;
             Result lastResult = null;
 
-            for (int i = 1; i <= 100; i++)
-            {
-                if (lastResult != null)
-                {
-                    betAmount = lastResult.IsWin ? minimumBet : betAmount * 2;
-                }
+            PrintHeader();
 
-                if (betAmount > rouletteTable.TableLimit)
-                {
-                    betAmount = rouletteTable.TableLimit;
-                }
-                
-                var bet = new Bet(ColorBet.Red, betAmount);
+            for (int i = 1; i <= iterations; i++)
+            {
+                var bet = strategy.DetermineBet(bankRoll,minimumBet, rouletteTable.TableLimit, lastResult);
+
                 Result result = rouletteTable.Bet(bet);
                 lastResult = result;
 
                 bankRoll = TallyResult(bankRoll, bet, result);
+                
                 PrintResult(bankRoll, bet, result);
             }
+        }
+
+        private static void PrintHeader()
+        {
+            Console.WriteLine("Bankroll\tColor\tBetAmount\tWinAmount\tIsWin");
         }
 
         private static void PrintResult(int bankRoll, Bet bet, Result result)
