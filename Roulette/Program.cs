@@ -8,11 +8,12 @@ namespace Roulette
     {
         private static void Main(string[] args)
         {
-            RunGame(500, 1, 20, new MartingaleStrategy());
+            var results = RunGame(500, 1, 20, new MartingaleStrategy());
+            PrintResult(results);
             Console.Read();
         }
         
-        private static void RunGame(int bankRoll, int minimumBet, int iterations, RouletteBettingStrategy strategy)
+        private static IEnumerable<ResultDataItem> RunGame(int bankRoll, int minimumBet, int iterations, RouletteBettingStrategy strategy)
         {
             var results = new List<ResultDataItem>(); 
             
@@ -31,7 +32,7 @@ namespace Roulette
                 results.Add(new ResultDataItem() {Bankroll = bankRoll, Bet = bet, Result = result});
             }
 
-            PrintResult(results);
+            return results;
         }
 
         private static void PrintResult(IEnumerable<ResultDataItem> items)
