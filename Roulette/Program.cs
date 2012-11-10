@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Roulette.BettingStrategies;
+using Roulette.Formatters;
 
 namespace Roulette
 {
@@ -9,7 +10,7 @@ namespace Roulette
         private static void Main(string[] args)
         {
             var results = RunGame(500, 1, 20, new MartingaleStrategy());
-            PrintResult(results);
+            PrintResult(results, new ResultTabFormatter());
             Console.Read();
         }
         
@@ -35,15 +36,15 @@ namespace Roulette
             return results;
         }
 
-        private static void PrintResult(IEnumerable<ResultDataItem> items)
+        private static void PrintResult(IEnumerable<ResultDataItem> items, IResultFormatter formatter)
         {
             //header
-            Console.WriteLine("Bankroll\tColor\tBetAmount\tWinAmount\tIsWin");
+            Console.WriteLine(formatter.GetHeader());
 
             //detail
             foreach (var item in items)
             {
-                Console.WriteLine("{2:c}\t{0}\t{1}", item.Bet, item.Result, item.Bankroll);
+                Console.WriteLine(formatter.GetDetail(item));
             }
             
         }

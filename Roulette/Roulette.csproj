@@ -47,6 +47,9 @@
     <Compile Include="Bet.cs" />
     <Compile Include="ColorBet.cs" />
     <Compile Include="BettingStrategies\MartingaleStrategy.cs" />
+    <Compile Include="Formatters\IResultFormatter.cs" />
+    <Compile Include="Formatters\ResultFormatterBase.cs" />
+    <Compile Include="Formatters\ResultTabFormatter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result.cs" />
@@ -56,6 +59,7 @@
     <Compile Include="RouletteNumberList.cs" />
     <Compile Include="RouletteTable.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
