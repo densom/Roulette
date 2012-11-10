@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Roulette
+namespace RouletteLogic
 {
-    internal class RouletteTable
+    public class RouletteTable
     {
         private readonly Random _random = new Random();
 

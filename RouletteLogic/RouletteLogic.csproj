@@ -2,20 +2,18 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D71499F0-E2B1-46B1-9445-E7EBFB913903}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{ACAD9330-EEF3-438A-A2FC-9704D83D19B5}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Roulette</RootNamespace>
-    <AssemblyName>Roulette</AssemblyName>
+    <RootNamespace>RouletteLogic</RootNamespace>
+    <AssemblyName>RouletteLogic</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,8 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,14 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Bet.cs" />
+    <Compile Include="BettingStrategies\AlwaysBetRed.cs" />
+    <Compile Include="BettingStrategies\MartingaleStrategy.cs" />
+    <Compile Include="BettingStrategies\RouletteBettingStrategy.cs" />
+    <Compile Include="ColorBet.cs" />
+    <Compile Include="Formatters\IResultFormatter.cs" />
+    <Compile Include="Formatters\ResultFormatterBase.cs" />
+    <Compile Include="Formatters\ResultTabFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RouletteLogic\RouletteLogic.csproj">
-      <Project>{ACAD9330-EEF3-438A-A2FC-9704D83D19B5}</Project>
-      <Name>RouletteLogic</Name>
-    </ProjectReference>
+    <Compile Include="Result.cs" />
+    <Compile Include="ResultDataItem.cs" />
+    <Compile Include="RouletteNumber.cs" />
+    <Compile Include="RouletteNumberList.cs" />
+    <Compile Include="RouletteTable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

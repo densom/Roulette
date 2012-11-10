@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Roulette
+namespace RouletteLogic
 {
     internal class RouletteNumberList : List<RouletteNumber>
     {

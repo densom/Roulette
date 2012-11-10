@@ -1,6 +1,6 @@
-﻿namespace Roulette
+﻿namespace RouletteLogic
 {
-    internal enum ColorBet
+    public enum ColorBet
     {
         Red,
         Black,

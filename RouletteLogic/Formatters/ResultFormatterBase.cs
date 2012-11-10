@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Roulette.Formatters
+namespace RouletteLogic.Formatters
 {
-    abstract internal class ResultFormatterBase : IResultFormatter
+    public abstract class ResultFormatterBase : IResultFormatter
     {
         protected List<string> HeaderTextList = new List<string> {"Bankroll","Color","BetAmount","WinAmount","IsWin"};
 

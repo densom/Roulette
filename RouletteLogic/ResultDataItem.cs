@@ -1,6 +1,6 @@
-﻿namespace Roulette
+﻿namespace RouletteLogic
 {
-    internal class ResultDataItem
+    public class ResultDataItem
     {
         public int Bankroll { get; set; }
         public Bet Bet { get; set; }

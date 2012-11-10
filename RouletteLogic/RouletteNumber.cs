@@ -1,4 +1,4 @@
-﻿namespace Roulette
+﻿namespace RouletteLogic
 {
     internal class RouletteNumber
     {

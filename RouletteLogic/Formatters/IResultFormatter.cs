@@ -1,6 +1,6 @@
-﻿namespace Roulette.Formatters
+﻿namespace RouletteLogic.Formatters
 {
-    interface IResultFormatter
+    public interface IResultFormatter
     {
         string GetHeader();
         string GetDetail(ResultDataItem item);

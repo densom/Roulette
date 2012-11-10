@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Roulette.BettingStrategies;
-using Roulette.Formatters;
+using RouletteLogic;
+using RouletteLogic.BettingStrategies;
+using RouletteLogic.Formatters;
 
 namespace Roulette
 {

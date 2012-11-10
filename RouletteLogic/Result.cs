@@ -1,6 +1,6 @@
-﻿namespace Roulette
+﻿namespace RouletteLogic
 {
-    internal class Result
+    public class Result
     {
         public int NetAmount { get; set; }
         public bool IsWin { get; set; }

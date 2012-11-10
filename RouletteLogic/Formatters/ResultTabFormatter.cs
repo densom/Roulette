@@ -1,19 +1,19 @@
 using System;
 
-namespace Roulette.Formatters
+namespace RouletteLogic.Formatters
 {
-    internal class ResultTabFormatter : ResultFormatterBase
+    public class ResultTabFormatter : ResultFormatterBase
     {
-        private string delimiter = "\t";
+        private const string Delimiter = "\t";
 
         public override string GetHeader()
         {
-            return string.Join(delimiter, HeaderTextList);
+            return string.Join(Delimiter, HeaderTextList);
         }
 
         public override string GetDetail(ResultDataItem item)
         {
-            return string.Join(delimiter, 
+            return string.Join(Delimiter, 
                 string.Format("{0:c}",item.Bankroll), 
                 item.Bet.Color, 
                 string.Format("{0:c}",item.Bet.Amount), 

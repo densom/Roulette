@@ -1,6 +1,6 @@
-﻿namespace Roulette.BettingStrategies
+﻿namespace RouletteLogic.BettingStrategies
 {
-    internal class MartingaleStrategy : RouletteBettingStrategy
+    public class MartingaleStrategy : RouletteBettingStrategy
     {
 
         public override Bet DetermineBet(int currentBankRoll, int minimumBet, int tableLimit, Result lastResult)

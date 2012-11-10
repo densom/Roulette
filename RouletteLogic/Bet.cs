@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 
-namespace Roulette
+namespace RouletteLogic
 {
-    internal class Bet
+    public class Bet
     {
         [DebuggerStepThrough]
         public Bet(ColorBet color, int amount)

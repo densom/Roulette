@@ -1,4 +1,4 @@
-﻿namespace Roulette.BettingStrategies
+﻿namespace RouletteLogic.BettingStrategies
 {
     internal class AlwaysBetRed : RouletteBettingStrategy
     {
