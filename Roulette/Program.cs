@@ -26,7 +26,9 @@ namespace Roulette
             {
                 var bet = strategy.DetermineBet(bankRoll,minimumBet, rouletteTable.TableLimit, lastResult);
 
-                Result result = rouletteTable.Bet(bet);
+                // rouletteTable.PlaceBet(bet);
+                var result = rouletteTable.BetSingle(bet);
+
                 lastResult = result;
 
                 bankRoll = TallyResult(bankRoll, bet, result);
