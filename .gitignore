@@ -7,3 +7,5 @@ TestResults
 
 # Resharper
 _ReSharper.Roulette
+*.user
+*.suo
