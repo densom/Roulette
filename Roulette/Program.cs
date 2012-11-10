@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Roulette.BettingStrategies;
 
 namespace Roulette
@@ -10,13 +11,13 @@ namespace Roulette
             RunGame(500, 1, 20, new MartingaleStrategy());
             Console.Read();
         }
-
+        
         private static void RunGame(int bankRoll, int minimumBet, int iterations, RouletteBettingStrategy strategy)
         {
+            var results = new List<ResultDataItem>(); 
+            
             var rouletteTable = new RouletteTable(200);
             Result lastResult = null;
-
-            PrintHeader();
 
             for (int i = 1; i <= iterations; i++)
             {
@@ -27,18 +28,23 @@ namespace Roulette
 
                 bankRoll = TallyResult(bankRoll, bet, result);
                 
-                PrintResult(bankRoll, bet, result);
+                results.Add(new ResultDataItem() {Bankroll = bankRoll, Bet = bet, Result = result});
             }
+
+            PrintResult(results);
         }
 
-        private static void PrintHeader()
+        private static void PrintResult(IEnumerable<ResultDataItem> items)
         {
+            //header
             Console.WriteLine("Bankroll\tColor\tBetAmount\tWinAmount\tIsWin");
-        }
 
-        private static void PrintResult(int bankRoll, Bet bet, Result result)
-        {
-            Console.WriteLine("{2:c}\t{0}\t{1}", bet, result, bankRoll);
+            //detail
+            foreach (var item in items)
+            {
+                Console.WriteLine("{2:c}\t{0}\t{1}", item.Bet, item.Result, item.Bankroll);
+            }
+            
         }
 
         private static int TallyResult(int originalBankroll, Bet bet, Result result)
@@ -48,5 +54,7 @@ namespace Roulette
 
             return originalBankroll;
         }
+
+        
     }
 }
