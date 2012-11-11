@@ -1,0 +1,79 @@
+<TemplatesExport family="Live Templates">
+  <Template uid="a9c14eb8-2571-49f1-9b32-7facc748a518" text="Assert.That($Condition$, Is.EqualTo($Value$));$END$" shortcut="ise" description="Assert That Condition Is Equal" reformat="true" shortenQualifiedReferences="true">
+    <Context>
+      <CSharpContext context="Expression" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="Condition" expression="" initialRange="0" />
+      <Variable name="Value" expression="" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="1ceec189-6d86-4947-bc6a-b0f7815a7889" text="Assert.That($Condition$, Is.False);$END$" shortcut="isf" description="Assert That Condition Is False" reformat="true" shortenQualifiedReferences="true">
+    <Context>
+      <CSharpContext context="Expression" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="Condition" expression="" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="12b775f8-347e-4e44-abad-40ae3ba3fc6c" text="Assert.That($Condition$, Is.Null);$END$" shortcut="isn" description="Assert That Condition Is Null" reformat="true" shortenQualifiedReferences="true">
+    <Context>
+      <CSharpContext context="Expression" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="Condition" expression="" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="03e85260-5bca-4a1f-8f7d-55ab20e17517" text="Assert.That($Condition$, Is.Not.Null);$END$" shortcut="isnn" description="Assert That Condition Is Not Null" reformat="true" shortenQualifiedReferences="true">
+    <Context>
+      <CSharpContext context="Expression" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="Condition" expression="" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="80d25743-88dc-4a74-99fc-0ca588c8e9f4" text="Assert.That($Condition$);$END$" shortcut="ist" description="Assert That Condition Is True" reformat="true" shortenQualifiedReferences="true">
+    <Context>
+      <CSharpContext context="Expression" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="Condition" expression="" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="27e6309d-46d9-41fd-8faf-287c101feb36" text="[SetUp]&#xD;&#xA;public virtual void SetUp()&#xD;&#xA;{&#xD;&#xA;	$END$&#xD;&#xA;}" shortcut="setup" description="Test Setup" reformat="true" shortenQualifiedReferences="true">
+    <Context>
+      <CSharpContext context="TypeMember" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables />
+    <CustomProperties />
+  </Template>
+  <Template uid="12ee98e7-00ad-43e4-ba14-d55d5d3c7d1f" text="[TearDown]&#xD;&#xA;public virtual void TearDown()&#xD;&#xA;{&#xD;&#xA;	$END$&#xD;&#xA;}" shortcut="teardown" description="Test Teardown" reformat="true" shortenQualifiedReferences="true">
+    <Context>
+      <CSharpContext context="TypeMember" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables />
+    <CustomProperties />
+  </Template>
+  <Template uid="316191fb-4c9f-4732-b161-cb5d81f73479" text="[Test]&#xD;&#xA;public void $TEST$()&#xD;&#xA;{&#xD;&#xA;	$END$&#xD;&#xA;}" shortcut="test" description="New NUnit Tests" reformat="true" shortenQualifiedReferences="true">
+    <Context>
+      <CSharpContext context="TypeMember" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="TEST" expression="" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+</TemplatesExport>
