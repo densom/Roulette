@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace RouletteLogic
 {
     public class RouletteTable
     {
         private readonly Random _random = new Random();
+        private readonly List<Bet> _bets = new List<Bet>();
 
         public RouletteTable(int tableLimit)
         {
@@ -13,36 +15,71 @@ namespace RouletteLogic
 
         public int TableLimit { get; set; }
 
-        public Result Bet(Bet bet)
+        public void PlaceBet(Bet bet)
         {
-            return Bet(bet.Color, bet.Amount);
+            _bets.Add(bet);
         }
 
-        public Result Bet(ColorBet colorBet, int betAmount)
+        private void ClearBets()
         {
-            if (betAmount > TableLimit)
+            _bets.Clear();
+        }
+        private void ValidateBets()
+        {
+            foreach (var bet in _bets)
             {
-                throw new ArgumentException("Bet amount exceeds table limit");
-            }
 
-            if (colorBet == ColorBet.Green)
-            {
-                throw new ArgumentException("Cannot bet on green");
-            }
+                if (bet.Amount > TableLimit)
+                {
+                    throw new ArgumentException("Bet amount exceeds table limit");
+                }
 
-            if (!(betAmount > 0))
-            {
-                throw new ArgumentException("Bet must bet greater than 0");
+                if (bet.Color == ColorBet.Green)
+                {
+                    throw new ArgumentException("Cannot bet on green");
+                }
+
+                if (!(bet.Amount > 0))
+                {
+                    throw new ArgumentException("Bet must bet greater than 0");
+                }
             }
+        }
+        
+        public List<Result> PlayGames()
+        {
+            List<Result> results = new List<Result>(_bets.Count);
+
+            ValidateBets();
 
             RouletteNumber numberRolled = RollTheBall();
 
-            var result = new Result();
-            result.IsWin = numberRolled.Color == colorBet;
-            result.NetAmount = result.IsWin ? betAmount*2 : 0;
-            result.BetAmount = betAmount;
+            foreach (var bet in _bets)
+            {
+                
+                var result = new Result();
+                result.IsWin = numberRolled.Color == bet.Color;
+                result.NetAmount = result.IsWin ? bet.Amount * 2 : 0;
+                result.BetAmount = bet.Amount;
 
-            return result;
+                results.Add(result);
+            }
+
+            ClearBets();
+
+            return results;
+
+        }
+
+        public Result BetSingle(Bet bet)
+        {
+            PlaceBet(bet);
+            return PlayGames()[0];
+        }
+
+        public Result BetSingle(ColorBet colorBet, int betAmount)
+        {
+            return BetSingle(new Bet(colorBet, betAmount));
         }
 
         private RouletteNumber RollTheBall()
