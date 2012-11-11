@@ -17,7 +17,7 @@
                 betAmount = tableLimit;
             }
 
-            return new Bet(ColorBet.Red, betAmount);
+            return new Bet(BetType.Red, betAmount);
         }
     }
 }

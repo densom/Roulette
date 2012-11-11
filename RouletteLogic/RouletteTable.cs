@@ -8,18 +8,16 @@ namespace RouletteLogic
         private readonly Random _random = new Random();
         private readonly List<Bet> _bets = new List<Bet>();
         private int _tableLimit;
-
         public RouletteTable(int tableLimit)
         {
             TableLimit = tableLimit;
         }
-
         public int TableLimit
         {
             get { return _tableLimit; } 
             private set
             {
-                if (_tableLimit <= 0)
+                if (value <= 0)
                 {
                     throw new ArgumentException("Table limit must be greater than zero");
                 }
@@ -27,12 +25,10 @@ namespace RouletteLogic
                 _tableLimit = value;
             }
         }
-
         public void PlaceBet(Bet bet)
         {
             _bets.Add(bet);
         }
-
         private void ClearBets()
         {
             _bets.Clear();
@@ -47,7 +43,7 @@ namespace RouletteLogic
                     throw new ArgumentException("Bet amount exceeds table limit");
                 }
 
-                if (bet.Color == ColorBet.Green)
+                if (bet.BetType == BetType.Green)
                 {
                     throw new ArgumentException("Cannot bet on green");
                 }
@@ -58,7 +54,6 @@ namespace RouletteLogic
                 }
             }
         }
-        
         public List<Result> PlayGames()
         {
             List<Result> results = new List<Result>(_bets.Count);
@@ -71,7 +66,7 @@ namespace RouletteLogic
             {
                 
                 var result = new Result();
-                result.IsWin = numberRolled.Color == bet.Color;
+                result.IsWin = numberRolled.RouletteColor == bet.BetType.RouletteColor;
                 result.NetAmount = result.IsWin ? bet.Amount * 2 : 0;
                 result.BetAmount = bet.Amount;
 
@@ -83,18 +78,15 @@ namespace RouletteLogic
             return results;
 
         }
-
         public Result BetSingle(Bet bet)
         {
             PlaceBet(bet);
             return PlayGames()[0];
         }
-
-        public Result BetSingle(ColorBet colorBet, int betAmount)
+        public Result BetSingle(BetTypeValue betTypeValue, int betAmount)
         {
-            return BetSingle(new Bet(colorBet, betAmount));
+            return BetSingle(new Bet(betTypeValue, betAmount));
         }
-
         private RouletteNumber RollTheBall()
         {
             var rouletteNumberList = new RouletteNumberList();

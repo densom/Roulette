@@ -2,6 +2,13 @@
 
 namespace RouletteLogic
 {
+    public enum RouletteColors
+    {
+        Green,
+        Red,
+        Black
+    }
+
     internal class RouletteNumberList : List<RouletteNumber>
     {
         public RouletteNumberList()
@@ -18,15 +25,15 @@ namespace RouletteLogic
                 switch (i)
                 {
                     case 37:
-                        Add(new RouletteNumber(ColorBet.Green, "0"));
+                        Add(new RouletteNumber(RouletteColors.Green, "0"));
                         break;
                     case 38:
-                        Add(new RouletteNumber(ColorBet.Green, "00"));
+                        Add(new RouletteNumber(RouletteColors.Green, "00"));
                         break;
                     default:
                         Add(useRed
-                                ? new RouletteNumber(ColorBet.Red, (i + 1).ToString())
-                                : new RouletteNumber(ColorBet.Black, (i + 1).ToString()));
+                                ? new RouletteNumber(RouletteColors.Black, (i + 1).ToString())
+                                : new RouletteNumber(RouletteColors.Red, (i + 1).ToString()));
                         break;
                 }
 

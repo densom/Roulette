@@ -12,7 +12,7 @@ namespace Roulette
     {
         private static void Main(string[] args)
         {
-            var results = RunGame(500, 1, 20, new MartingaleStrategy());
+            var results = RunGame(100, 1, 20, new MartingaleStrategy());
             PrintResult(results, new ResultTabFormatter());
             Console.Read();
         }
@@ -33,7 +33,7 @@ namespace Roulette
 
                 lastResult = results.First();
 
-                bankRoll = TallyResult(bankRoll, bet, lastResult);
+                bankRoll = Helper.TallyResult(bankRoll, bet, lastResult);
                 
                 resultDataItems.Add(new ResultDataItem() {Bankroll = bankRoll, Bet = bet, Result = lastResult});
             }
@@ -53,15 +53,5 @@ namespace Roulette
             }
             
         }
-
-        private static int TallyResult(int originalBankroll, Bet bet, Result result)
-        {
-            originalBankroll -= bet.Amount;
-            originalBankroll += result.NetAmount;
-
-            return originalBankroll;
-        }
-
-        
     }
 }

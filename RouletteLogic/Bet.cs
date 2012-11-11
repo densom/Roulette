@@ -1,22 +1,23 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace RouletteLogic
 {
     public class Bet
     {
-        [DebuggerStepThrough]
-        public Bet(ColorBet color, int amount)
+       
+        public int Amount { get; set; }
+        public BetTypeValue BetType { get; protected set; }
+
+        public Bet(BetTypeValue betType, int amount)
         {
-            Color = color;
+            BetType = betType;
             Amount = amount;
         }
 
-        public ColorBet Color { get; set; }
-        public int Amount { get; set; }
-
         public override string ToString()
         {
-            return string.Format("{0}\t{1:c}", Color, Amount);
+            return string.Format("{0}\t{1:c}", BetType, Amount);
         }
     }
 }

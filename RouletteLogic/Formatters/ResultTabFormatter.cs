@@ -15,7 +15,7 @@ namespace RouletteLogic.Formatters
         {
             return string.Join(Delimiter, 
                 string.Format("{0:c}",item.Bankroll), 
-                item.Bet.Color, 
+                item.Bet.BetType.StringValue, 
                 string.Format("{0:c}",item.Bet.Amount), 
                 string.Format("{0:c}",item.Result.BetAmount), 
                 item.Result.IsWin);
