@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using RouletteLogic;
 using RouletteLogic.BettingStrategies;
 using RouletteLogic.Formatters;
@@ -15,11 +17,9 @@ namespace Roulette
             Console.Read();
         }
         
-
-        //todo: move the RunGame logic to the RouletteLogic assembly.
         private static IEnumerable<ResultDataItem> RunGame(int bankRoll, int minimumBet, int iterations, RouletteBettingStrategy strategy)
         {
-            var results = new List<ResultDataItem>(); 
+            var resultDataItems = new List<ResultDataItem>(); 
             
             var rouletteTable = new RouletteTable(200);
             Result lastResult = null;
@@ -28,15 +28,17 @@ namespace Roulette
             {
                 var bet = strategy.DetermineBet(bankRoll,minimumBet, rouletteTable.TableLimit, lastResult);
 
-                Result result = rouletteTable.Bet(bet);
-                lastResult = result;
+                rouletteTable.PlaceBet(bet);
+                var results = rouletteTable.PlayGames();
 
-                bankRoll = TallyResult(bankRoll, bet, result);
+                lastResult = results.First();
+
+                bankRoll = TallyResult(bankRoll, bet, lastResult);
                 
-                results.Add(new ResultDataItem() {Bankroll = bankRoll, Bet = bet, Result = result});
+                resultDataItems.Add(new ResultDataItem() {Bankroll = bankRoll, Bet = bet, Result = lastResult});
             }
-
-            return results;
+            
+            return resultDataItems;
         }
 
         private static void PrintResult(IEnumerable<ResultDataItem> items, IResultFormatter formatter)
