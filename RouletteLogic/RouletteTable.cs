@@ -7,13 +7,26 @@ namespace RouletteLogic
     {
         private readonly Random _random = new Random();
         private readonly List<Bet> _bets = new List<Bet>();
+        private int _tableLimit;
 
         public RouletteTable(int tableLimit)
         {
             TableLimit = tableLimit;
         }
 
-        public int TableLimit { get; set; }
+        public int TableLimit
+        {
+            get { return _tableLimit; } 
+            private set
+            {
+                if (_tableLimit <= 0)
+                {
+                    throw new ArgumentException("Table limit must be greater than zero");
+                }
+
+                _tableLimit = value;
+            }
+        }
 
         public void PlaceBet(Bet bet)
         {
